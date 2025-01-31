@@ -1,0 +1,34 @@
+services:
+  container1:
+    image: ubuntu:latest
+    cpuset: "0,2"
+    container_name: CT1
+    command: ["tail", "-f", "/dev/null"]
+    deploy:
+      resources:
+        limits:
+          memory: "2g"
+    privileged: true
+    cap_add:
+      - SYS_NICE
+    networks:
+      - internal_net
+
+  container2:
+    image: ubuntu:latest
+    cpuset: "4,6,8,10"
+    container_name: CT2
+    command: ["tail", "-f", "/dev/null"]
+    deploy:
+      resources:
+        limits:
+          memory: "4g"
+    privileged: true
+    cap_add:
+      - SYS_NICE
+    networks:
+      - internal_net
+
+networks:
+  internal_net:
+    internal: true
