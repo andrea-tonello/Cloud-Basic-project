@@ -1,0 +1,106 @@
+
+======================= sysbench CPU =======================
+
+(CT1) root@fedora:~# sysbench --test=cpu --threads=2 --cpu-max-prime=100000 run
+
+Running the test with following options:
+Number of threads: 2
+Initializing random number generator from current time
+
+Prime numbers limit: 100000
+
+Initializing worker threads...
+
+Threads started!
+
+CPU speed:
+    events per second:   499.62
+
+General statistics:
+    total time:                          10.0026s
+    total number of events:              4998
+
+Latency (ms):
+         min:                                    3.96
+         avg:                                    4.00
+         max:                                    5.96
+         95th percentile:                        4.10
+         sum:                                20001.90
+
+Threads fairness:
+    events (avg/stddev):           2499.0000/1.00
+    execution time (avg/stddev):   10.0010/0.00
+
+
+
+
+(CT2) root@fedora:/# sysbench --test=cpu --threads=4 --cpu-max-prime=100000 run
+
+Running the test with following options:
+Number of threads: 4
+Initializing random number generator from current time
+
+Prime numbers limit: 100000
+
+Initializing worker threads...
+
+Threads started!
+
+CPU speed:
+    events per second:   983.50
+
+General statistics:
+    total time:                          10.0030s
+    total number of events:              9839
+
+Latency (ms):
+         min:                                    3.96
+         avg:                                    4.07
+         max:                                    6.09
+         95th percentile:                        4.18
+         sum:                                40003.60
+
+Threads fairness:
+    events (avg/stddev):           2459.7500/0.43
+    execution time (avg/stddev):   10.0009/0.00
+
+
+
+
+======================= sysbench RAM =======================
+
+(CT1) root@fedora:/# sysbench memory --memory-block-size=1M --memory-total-size=16G run
+
+Running the test with following options:
+Number of threads: 1
+Initializing random number generator from current time
+
+Running memory speed test with the following options:
+  block size: 1024KiB
+  total size: 16384MiB
+  operation: write
+  scope: global
+
+Initializing worker threads...
+
+Threads started!
+
+Total operations: 16384 (42167.63 per second)
+
+16384.00 MiB transferred (42167.63 MiB/sec)
+
+
+General statistics:
+    total time:                          0.3881s
+    total number of events:              16384
+
+Latency (ms):
+         min:                                    0.02
+         avg:                                    0.02
+         max:                                    1.60
+         95th percentile:                        0.02
+         sum:                                  386.31
+
+Threads fairness:
+    events (avg/stddev):           16384.0000/0.00
+    execution time (avg/stddev):   0.3863/0.00

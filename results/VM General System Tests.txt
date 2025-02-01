@@ -1,0 +1,102 @@
+
+======================= sysbench CPU =======================
+
+vm1@vm1:~$ sysbench --test=cpu --threads=2 --cpu-max-prime=100000 run
+
+Running the test with following options:
+Number of threads: 2
+Initializing random number generator from current time
+Prime numbers limit: 100000
+
+Initializing worker threads...
+Threads started!
+
+CPU speed:
+    events per second:   398.77
+
+General statistics:
+    total time:                          10.0028s
+    total number of events:              3989
+
+Latency (ms):
+         min:                                    4.22
+         avg:                                    5.01
+         max:                                   11.26
+         95th percentile:                        9.56
+         sum:                                19999.35
+
+Threads fairness:
+    events (avg/stddev):           1994.5000/10.50
+    execution time (avg/stddev):   9.9997/0.00
+
+
+
+
+vm2@vm2:~$ sysbench --test=cpu --threads=4 --cpu-max-prime=100000 run
+
+Running the test with following options:
+Number of threads: 4
+Initializing random number generator from current time
+Prime numbers limit: 100000
+
+Initializing worker threads...
+Threads started!
+
+CPU speed:
+    events per second:   802.82
+
+General statistics:
+    total time:                          10.0025s
+    total number of events:              8031
+
+Latency (ms):
+         min:                                    4.19
+         avg:                                    4.98
+         max:                                   11.23
+         95th percentile:                        9.39
+         sum:                                40000.98
+
+Threads fairness:
+    events (avg/stddev):           2007.7500/6.22
+    execution time (avg/stddev):   10.0002/0.00
+
+
+
+
+======================= sysbench RAM =======================
+
+vm1@vm1:~$ sysbench memory --memory-block-size=1M --memory-total-size=16G run
+
+Running the test with following options:
+Number of threads: 1
+Initializing random number generator from current time
+
+Running memory speed test with the following options:
+  block size: 1024KiB
+  total size: 16384MiB
+  operation: write
+  scope: global
+
+Initializing worker threads...
+
+Threads started!
+
+Total operations: 16384 (24372.10 per second)
+
+16384.00 MiB transferred (24372.10 MiB/sec)
+
+
+General statistics:
+    total time:                          0.6717s
+    total number of events:              16384
+
+Latency (ms):
+         min:                                    0.04
+         avg:                                    0.04
+         max:                                    1.57
+         95th percentile:                        0.05
+         sum:                                  668.70
+
+Threads fairness:
+    events (avg/stddev):           16384.0000/0.00
+    execution time (avg/stddev):   0.6687/0.00
