@@ -1,0 +1,14 @@
+
+======================= VM =======================
+
+LOCAL
+vm1@vm1:/$ dd if=/dev/zero of=/tmp/dd_test/testfile bs=1M count=500 oflag=direct
+500+0 records in
+500+0 records out
+524288000 bytes (524 MB, 500 MiB) copied, 0.677304 s, 774 MB/s
+
+NFS
+vm1@vm1:/$ dd if=/dev/zero of=/mnt/nfs_share/testfile bs=1M count=500 oflag=direct
+500+0 records in
+500+0 records out
+524288000 bytes (524 MB, 500 MiB) copied, 5.76221 s, 91.0 MB/s
