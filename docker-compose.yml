@@ -31,4 +31,4 @@ services:
 
 networks:
   internal_net:
-    internal: true
+    driver: bridge
